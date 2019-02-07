@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" preserveAspectRatio="x133Y149 meet" viewBox="0 0 133 149" version="1.1">
+  <defs>
+    <path d="M624,325.79675 L624,441.301559 C624,448.204591 632.296414,452.409631 638.681356,448.741139 L736.841255,392.357833 C742.757644,388.959695 742.850781,381.093095 737.016067,377.578497 L638.854736,318.45838 C632.479823,314.619357 624,318.80776 624,325.79675" id="path-1"/>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-7.50249231" y="-7.50249231" width="132.340882" height="148.102421">
+      <rect x="616.497508" y="309.497508" width="132.340882" height="148.102421" fill="white"/>
+      <use xlink:href="#path-1" fill="black"/>
+    </mask>
+  </defs>
+  <g id="VPC-Web-Spec" stroke="none" fill="none">
+    <g id="expanded_player" transform="translate(-616.000000, -309.000000)">
+      <g id="large-play">
+        <use fill-opacity="0.8" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"/>
+        <use stroke-opacity="0.30" stroke="#000000" mask="url(#mask-2)" stroke-width="15.0049846" xlink:href="#path-1"/>
+      </g>
+    </g>
+  </g>
+</svg>
