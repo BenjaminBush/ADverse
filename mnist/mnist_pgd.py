@@ -1,5 +1,5 @@
 """
-This tutorial shows how to generate adversarial examples using FGSM
+This tutorial shows how to generate adversarial examples using PGD
 and train a model using adversarial training with Keras.
 It is very similar to mnist_tutorial_tf.py, which does the same
 thing but without a dependence on keras.
@@ -17,7 +17,7 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 
-from cleverhans.attacks import FastGradientMethod
+from cleverhans.attacks import ProjectedGradientDescent
 from cleverhans.compat import flags
 from cleverhans.dataset import MNIST
 from cleverhans.loss import CrossEntropy
@@ -142,12 +142,12 @@ def mnist_tutorial(train_start=0, train_end=60000, test_start=0,
     acc = model_eval(sess, x, y, preds, x_train, y_train, args=eval_params)
     report.train_clean_train_clean_eval = acc
 
-  # Initialize the Fast Gradient Sign Method (FGSM) attack object and graph
-  fgsm = FastGradientMethod(wrap, sess=sess)
-  fgsm_params = {'eps': 0.3,
+  # Initialize the Projected Gradient Descent Method (PGD) attack object and graph
+  pgd = ProjectedGradientDescent(wrap, sess=sess)
+  pgd_params = {'eps': 0.3,
                  'clip_min': 0.,
                  'clip_max': 1.}
-  adv_x = fgsm.generate(x, **fgsm_params)
+  adv_x = pgd.generate(x, **pgd_params)
   # Consider the attack to be constant
   adv_x = tf.stop_gradient(adv_x)
   preds_adv = model(adv_x)
@@ -172,10 +172,10 @@ def mnist_tutorial(train_start=0, train_end=60000, test_start=0,
                       nb_classes=nb_classes)
   wrap_2 = KerasModelWrapper(model_2)
   preds_2 = model_2(x)
-  fgsm2 = FastGradientMethod(wrap_2, sess=sess)
+  pgd2 = ProjectedGradientDescent(wrap_2, sess=sess)
 
   def attack(x):
-    return fgsm2.generate(x, **fgsm_params)
+    return pgd2.generate(x, **pgd_params)
 
   preds_2_adv = model_2(attack(x))
   loss_2 = CrossEntropy(wrap_2, smoothing=label_smoothing, attack=attack)
