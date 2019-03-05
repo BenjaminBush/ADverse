@@ -1,2 +1,4 @@
 models/
 *.pyc
+*.h5
+*.tar
