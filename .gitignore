@@ -2,3 +2,4 @@ models/
 *.pyc
 *.h5
 *.tar
+.ipynb_checkpoints/
