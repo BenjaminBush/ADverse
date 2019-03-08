@@ -3,3 +3,4 @@ models/
 *.h5
 *.tar
 .ipynb_checkpoints/
+artifacts/
